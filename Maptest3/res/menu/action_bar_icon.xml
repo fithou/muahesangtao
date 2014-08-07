@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:maptest="http://schemas.android.com/apk/res-auto" >
+    <item android:id="@+id/action_search"
+          android:icon="@drawable/ic_action_search"
+          android:title="@string/action_search"
+          maptest:showAsAction="ifRoom"
+          maptest:actionViewClass="android.support.v7.widget.SearchView"/>    
+    <!-- More -->
+    <item
+        android:id="@+id/a_More"
+        android:icon="@drawable/ic_action_overflow"
+        android:showAsAction="always"
+        android:title="More"
+        maptest:showAsAction="ifRoom"
+        >
+        <menu>
+
+            <!-- Refresh -->
+            <item
+                android:id="@+id/action_refresh"
+                android:icon="@drawable/ic_action_about"
+                android:showAsAction="never"
+                android:title="@string/action_about"/>
+
+            <!-- Help -->
+            <item
+                android:id="@+id/action_help"
+                android:icon="@drawable/ic_action_help"
+                android:showAsAction="never"
+                android:title="@string/action_help"/>
+
+            <!-- Check updates -->
+            <item
+                android:id="@+id/action_check_updates"
+                android:icon="@drawable/ic_action_settings"
+                android:showAsAction="never"
+                android:title="@string/action_settings"/>
+        </menu>
+    </item>
+
+</menu>
