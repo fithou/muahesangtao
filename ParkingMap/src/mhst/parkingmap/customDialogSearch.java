@@ -41,28 +41,28 @@ public class customDialogSearch extends Dialog {
 			this.setTitle("Tên đường");
 			adapter = new ArrayAdapter<String>(context,
 					android.R.layout.simple_list_item_1, new ArrayList<String>(
-							GlobaVariables.getDuong.keySet()));
+							GlobaVariables.getDuong));
 			lv.setAdapter(adapter);
 			break;
 		case R.id.etPhuong:
 			this.setTitle("Tên phường");
 			adapter = new ArrayAdapter<String>(context,
 					android.R.layout.simple_list_item_1, new ArrayList<String>(
-							GlobaVariables.getPhuong.keySet()));
+							GlobaVariables.getPhuong));
 			lv.setAdapter(adapter);
 			break;
 		case R.id.etQuan:
 			this.setTitle("Tên quận");
 			adapter = new ArrayAdapter<String>(context,
 					android.R.layout.simple_list_item_1, new ArrayList<String>(
-							GlobaVariables.getQuan.keySet()));
+							GlobaVariables.getQuan));
 			lv.setAdapter(adapter);
 			break;
 		case R.id.etThanhpho:
 			this.setTitle("Tên thành phố");
 			adapter = new ArrayAdapter<String>(context,
 					android.R.layout.simple_list_item_1, new ArrayList<String>(
-							GlobaVariables.getTinhthanh.keySet()));
+							GlobaVariables.getTinhthanh));
 			lv.setAdapter(adapter);
 			break;
 

@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature
@@ -36,7 +37,8 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyA3JaG8lusk9XtaKofauIN-a0CwiHZl2xY" />
 
-        <activity android:name="mhst.parkingmap.SplashActivity" >
+        <activity android:name=".SplashActivity"
+            android:noHistory="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,56 +46,70 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="mhst.parkingmap.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".MainActivity" />
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name="mhst.parkingmap.showInformation"
+            android:name=".showInformation"
             android:label="@string/title_activity_second"
-            android:parentActivityName="mhst.parkingmap.MainActivity" >
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="mhst.parkingmap.MainActivity" />
         </activity>
         <activity
-            android:name="mhst.parkingmap.AddNewPark"
-            android:label="@string/title_activity_add_new_park" 
-            android:parentActivityName="mhst.parkingmap.MainActivity" >
+            android:name=".AddNewPark"
+            android:label="@string/title_activity_add_new_park"
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="mhst.parkingmap.MainActivity" />
         </activity>
         <activity
-            android:name="mhst.parkingmap.BookmarkParking"
-            android:label="@string/title_activity_bookmark_parking" 
-            android:parentActivityName="mhst.parkingmap.MainActivity">
+            android:name=".BookmarkParking"
+            android:label="@string/title_activity_bookmark_parking"
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="mhst.parkingmap.MainActivity" />
         </activity>
         <activity
-            android:name="mhst.parkingmap.ListShow"
-            android:label="@string/title_activity_list_show" 
-            android:parentActivityName="mhst.parkingmap.MainActivity">
+            android:name=".ListShow"
+            android:label="@string/title_activity_list_show"
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="mhst.parkingmap.MainActivity" />
         </activity>
         <activity
-            android:name="mhst.parkingmap.SettingsGPS"
-            android:label="@string/title_activity_settings_gps" 
-            android:parentActivityName="mhst.parkingmap.MainActivity">
+            android:name=".SettingsGPS"
+            android:label="@string/title_activity_settings_gps"
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="mhst.parkingmap.MainActivity" />
         </activity>
         <activity
-            android:name="mhst.parkingmap.About"
-            android:label="@string/title_activity_about" 
-            android:parentActivityName="mhst.parkingmap.MainActivity">
+            android:name=".About"
+            android:label="@string/title_activity_about"
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="mhst.parkingmap.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SearchResultActivity"
+            android:label="@string/title_activity_search_result" >
         </activity>
     </application>
 

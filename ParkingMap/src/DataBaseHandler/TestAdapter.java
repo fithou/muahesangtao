@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import Entity.*;
 import android.content.ContentValues;
 import android.content.Context; 
@@ -20,18 +24,21 @@ public class TestAdapter
     @SuppressWarnings("unused")
 	private SQLiteDatabase mDb; 
     private DataBaseHelper mDbHelper; 
+    private BRDataBaseHelper mBRDbHelper;
  
     public TestAdapter(Context context)  
     { 
         this.mContext = context; 
-        mDbHelper = new DataBaseHelper(mContext); 
+        mDbHelper = new DataBaseHelper(mContext);
+        mBRDbHelper = new BRDataBaseHelper(mContext);
     } 
  
     public TestAdapter createDatabase() throws SQLException  
     { 
         try  
         { 
-            mDbHelper.createDataBase(); 
+            mDbHelper.createDataBase();
+            mBRDbHelper.createDataBase();
         }  
         catch (IOException mIOException)  
         { 
@@ -47,6 +54,8 @@ public class TestAdapter
         { 
             mDbHelper.openDataBase(); 
             mDbHelper.close(); 
+            mBRDbHelper.openDataBase();
+            mBRDbHelper.close();
             mDb = mDbHelper.getReadableDatabase(); 
         }  
         catch (SQLException mSQLException)  
@@ -60,12 +69,32 @@ public class TestAdapter
     public void close()  
     { 
         mDbHelper.close(); 
-    } 
+        mBRDbHelper.close();
+    }
+   public List<ParkingLocation> getAllBoomarkParking(){
+	   List<ParkingLocation> bookmarkParkingList = new ArrayList<ParkingLocation>();
+	   String selectQuery = "Select * from tbl_parking";
+	   SQLiteDatabase db = mBRDbHelper.getReadableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
+		
+		// Looping through all rows and add to list
+		if (cursor.moveToFirst()){
+			do {
+				ParkingLocation bookmark = new ParkingLocation();
+				bookmark.setMa_parking(cursor.getString(0));
+				bookmark.setTen_parking(cursor.getString(1));
+				bookmark.setDiachi(cursor.getString(2));
+				bookmark.setImageUri(cursor.getString(3));
+				bookmarkParkingList.add(bookmark);
+			} while (cursor.moveToNext());
+		}
+	   return bookmarkParkingList;
+   }
  
     public List<ParkingLocation> getAllParking(){
 		List<ParkingLocation> ParkingList = new ArrayList<ParkingLocation>();
 		// Select All Query
-		String selectQuery = "SELECT e.ma_parking, e.ten_parking, e.sdt, e.tong_socho, e.vitri,e.like,e.dislike,e.sonha, a.ten_duongpho,b.ten_dmpx,c.ten_dmqh,d.ten_dmtt FROM dm_duongpho a JOIN dm_phuongxa b ON a.ma_dmpx = b.ma_dmpx JOIN dm_quanhuyen c ON b. ma_dmqh = c.ma_dmqh JOIN dm_tinhthanh d ON c.ma_dmtt = d.ma_dmtt JOIN tbl_parking e ON a.ma_duongpho = e.ma_duongpho";
+		String selectQuery = "SELECT * FROM tbl_parking";
 		
 		SQLiteDatabase db = mDbHelper.getReadableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
@@ -78,10 +107,11 @@ public class TestAdapter
 				parking.setTen_parking(cursor.getString(1));
 				parking.setSdt(cursor.getString(2));				
 				parking.setTong_socho(cursor.getString(3));
-				parking.setVitri(cursor.getString(4));
-				parking.setLike(Integer.parseInt(cursor.getString(5)));
-				parking.setDislike(Integer.parseInt(cursor.getString(6)));
-				parking.setDiachi(cursor.getString(7) + "-" + cursor.getString(8) + "-" + cursor.getString(9) + "-" + cursor.getString(10) + "-" + cursor.getString(11));
+				parking.setVitri(cursor.getString(6));
+				parking.setLike(Integer.parseInt(cursor.getString(4)));
+				
+				parking.setDiachi(cursor.getString(5));
+				parking.setImageUri(cursor.getString(7));
 				
 				// Adding KH to List
 				ParkingList.add(parking);
@@ -89,8 +119,8 @@ public class TestAdapter
 		}
 		return ParkingList;
 	}
-    public HashMap<String, String> getPhuong(){
-    	HashMap<String, String> PhuongList = new HashMap<String, String>();
+    public List<String> getPhuong(){
+    	List<String> PhuongList = new ArrayList<String>();
 		// Select All Query
 		String selectQuery = "SELECT*FROM dm_phuongxa";
 		
@@ -103,13 +133,13 @@ public class TestAdapter
 				String value = cursor.getString(0);
 				String key = cursor.getString(1);
 				// Adding KH to List
-				PhuongList.put(key, value);				
+				PhuongList.add(key);				
 			} while (cursor.moveToNext());
 		}
 		return PhuongList;
 	}
-    public HashMap<String, String> getDuong(){
-    	HashMap<String, String> PhuongList = new HashMap<String, String>();
+    public List<String> getDuong(){
+    	List<String> PhuongList = new ArrayList<String>();
 		// Select All Query
 		String selectQuery = "SELECT*FROM dm_duongpho";
 		
@@ -122,13 +152,13 @@ public class TestAdapter
 				String value = cursor.getString(0);
 				String key = cursor.getString(1);
 				// Adding KH to List
-				PhuongList.put(key, value);				
+				PhuongList.add(key);				
 			} while (cursor.moveToNext());
 		}
 		return PhuongList;
 	}
-    public HashMap<String, String> getQuan(){
-    	HashMap<String, String> PhuongList = new HashMap<String, String>();
+    public List<String> getQuan(){
+    	List<String> PhuongList = new ArrayList<String>();
 		// Select All Query
 		String selectQuery = "SELECT*FROM dm_quanhuyen";
 		
@@ -141,13 +171,13 @@ public class TestAdapter
 				String value = cursor.getString(0);
 				String key = cursor.getString(1);
 				// Adding KH to List
-				PhuongList.put(key, value);				
+				PhuongList.add(key);				
 			} while (cursor.moveToNext());
 		}
 		return PhuongList;
 	}
-    public HashMap<String, String> getTinhthanh(){
-    	HashMap<String, String> PhuongList = new HashMap<String, String>();
+    public List<String> getTinhthanh(){
+    	List<String> PhuongList = new ArrayList<String>();
 		// Select All Query
 		String selectQuery = "SELECT*FROM dm_tinhthanh";
 		
@@ -160,44 +190,111 @@ public class TestAdapter
 				String value = cursor.getString(0);
 				String key = cursor.getString(1);
 				// Adding KH to List
-				PhuongList.put(key, value);				
+				PhuongList.add(key);				
 			} while (cursor.moveToNext());
 		}
 		return PhuongList;
 	}
 
-    public boolean AddParking(String ten, String sdt, String sonha, String socho, int like, int dis_like, String duongpho, String vitri, String url) {
+    public boolean AddParking(String ten, String sdt, String socho, int like, String diachi, String vitri, String url) {
     	try
  		{
-    		String ma_duongpho;
-    		String sel_maduongpho = "SELECT ma_duongpho FROM dm_duongpho WHERE ten_duongpho = '" + duongpho + "'";
-    		Cursor mCur = mDb.rawQuery(sel_maduongpho, null);
-    		if (mCur != null){
-    			mCur.moveToNext();
-    		}
-    		ma_duongpho = mCur.getString(0);
-    		
+    		SQLiteDatabase db = mDbHelper.getWritableDatabase();    		
  			ContentValues cv = new ContentValues();
  			cv.put("ma_parking", vitri);
- 			cv.put("ten_parking", ten);
- 			cv.put("sonha", sonha);
+ 			cv.put("ten_parking", ten); 			
  			cv.put("tong_socho", socho);
- 			cv.put("like", like);
- 			cv.put("dislike", dis_like);
- 			cv.put("ma_duongpho", ma_duongpho);
+ 			cv.put("like", like); 			
+ 			cv.put("sdt", sdt); 			
  			cv.put("vitri", vitri);
  			cv.put("img", url);
- 			
- 			mDb.insert("tbl_parking", null, cv);
- 			return true;
- 			
+ 			String insert = "INSERT INTO tbl_parking VALUES('"+ vitri + "','" + ten + "','" + sdt + "'," + socho + "," + like + ",'" + diachi + "','" + vitri + "','" + url +"')";
+ 			Log.d("Insert", insert);
+ 			db.execSQL(insert);
+ 			//db.insert("tbl_parking", null, cv);
+ 			db.close();
+ 			return true; 			
  		}
  		catch(Exception ex)
  		{
  			return false;
  		}
-    } 
-     
+    }
+    public boolean addBookmark(ParkingLocation p){
+    	try {
+    		String insert = "INSERT INTO tbl_parking VALUES('"+ p.getMa_parking() + "','" + p.getTen_parking() + "','" + p.getDiachi() + "','" + p.getImageUri() +"')";    		
+    		Log.d("Insert Bookmark",insert);
+    		SQLiteDatabase db = mBRDbHelper.getWritableDatabase();
+    		db.execSQL(insert);
+    		db.close();
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+    }
+    public boolean addTrangthai(Trangthai p){
+    	try {
+    		String insert = "INSERT INTO tbl_trangthai VALUES('"+ p.getMa_parking() + "','" + p.getMa_MAC() + "'," + 1 + ")";    		
+    		Log.d("Insert Bookmark",insert);
+    		SQLiteDatabase db = mDbHelper.getWritableDatabase();
+    		db.execSQL(insert);
+    		db.close();
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+    }
+    
+   /**
+	 * Compose JSON out of SQLite records
+	 * @return
+	 */
+   public String composeJSONfromSQLite() {
+   	ArrayList<ParkingLocation> wordList;
+   	wordList = new ArrayList<ParkingLocation>();
+   	String selectQuery = "SELECT ma_parking, ten_parking, sdt, tong_socho, diachi, like , vitri, img  FROM tbl_parking";
+   	SQLiteDatabase db = mDbHelper.getReadableDatabase();
+	Cursor cursor = db.rawQuery(selectQuery, null);
+   	if (cursor.moveToFirst()) {
+   		do {
+   			ParkingLocation pl = new ParkingLocation();   			
+   			pl.setImageUri(cursor.getString(7));
+   			pl.setVitri(cursor.getString(6));   			
+   			pl.setLike(Integer.parseInt(cursor.getString(5)));
+   			pl.setTong_socho(cursor.getString(3));
+   			pl.setDiachi(cursor.getString(4));
+   			pl.setSdt(cursor.getString(2));
+   			pl.setTen_parking(cursor.getString(1));
+   			pl.setMa_parking(cursor.getString(0));
+   			wordList.add(pl);
+   		} while (cursor.moveToNext());
+   	}
+   	cursor.close();
+   	//mDb.close();
+   	Gson gson = new GsonBuilder().create();
+   	//Use GSON to serialize Array List to JSON
+		return gson.toJson(wordList);
+   }
+   public String composeJSONfromSQLiteStatus() {
+	   	ArrayList<Trangthai> wordList;
+	   	wordList = new ArrayList<Trangthai>();
+	   	String selectQuery = "SELECT * FROM tbl_trangthai";
+	   	SQLiteDatabase db = mDbHelper.getReadableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
+	   	if (cursor.moveToFirst()) {
+	   		do {
+	   			Trangthai tt = new Trangthai(cursor.getString(0), cursor.getString(1), 1);
+	   			wordList.add(tt);
+	   		} while (cursor.moveToNext());
+	   	}
+	   	cursor.close();
+	   	//mDb.close();
+	   	Gson gson = new GsonBuilder().create();
+	   	//Use GSON to serialize Array List to JSON
+			return gson.toJson(wordList);
+	   }
      
 
 } 

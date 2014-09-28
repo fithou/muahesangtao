@@ -38,7 +38,7 @@
             android:background="@drawable/edittext"
             android:ems="10"
             android:hint="Điện thoại"
-            android:inputType="text"
+            android:inputType="phone"
             android:textSize="14dp" >
         </EditText>
 
@@ -50,7 +50,7 @@
             android:background="@drawable/edittext"
             android:ems="10"
             android:hint="Tổng số chỗ"
-            android:inputType="text"
+            android:inputType="numberDecimal"
             android:textSize="14dp" >
         </EditText>
 

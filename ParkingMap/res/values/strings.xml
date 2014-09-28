@@ -37,5 +37,6 @@
     <string name="title_activity_settings_gps">Cài đặt GPS</string>
     <string name="title_activity_splash">Parking Map</string>
     <string name="title_activity_about">Thông tin</string>
+    <string name="title_activity_search_result">SearchResultActivity</string>
 
 </resources>

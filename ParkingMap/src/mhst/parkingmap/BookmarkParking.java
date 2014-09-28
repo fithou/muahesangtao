@@ -3,6 +3,10 @@ package mhst.parkingmap;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import Entity.ParkingLocation;
 import Globa.GlobaVariables;
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
@@ -18,18 +22,17 @@ import android.widget.AdapterView.OnItemClickListener;
 public class BookmarkParking extends ActionBarActivity {
 	
 	private ListView bookmarkList;
-	ParkingItemAdapter adapter = null;
+	BookmarkItemAdapter adapter = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bookmark_parking);
 		bookmarkList = (ListView) findViewById(R.id.listbookmark);
-
-		//adapter = new ParkingItemAdapter(getApplicationContext(), GlobaVariables.listParking);
 		
-//		ParkingItemAdapter adapter = new ParkingItemAdapter(this, R.layout.activity_bookmark_parking, GlobaVariables.listParking);		
-		bookmarkList.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, GlobaVariables.bookmarkParking));
+		adapter = new BookmarkItemAdapter(getApplicationContext(), GlobaVariables.bookmarkParking);
+		//bookmarkList.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, GlobaVariables.bookmarkParking));
+		bookmarkList.setAdapter(adapter);
 		bookmarkList.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -39,7 +42,7 @@ public class BookmarkParking extends ActionBarActivity {
 				Intent t = new Intent(getApplicationContext(),
 						showInformation.class);
 
-				t.putExtra("MarkerInfo", GlobaVariables.listParking.get(position).getVitri());
+				t.putExtra("MarkerInfo", GlobaVariables.bookmarkParking.get(position).getMa_parking());
 
 				startActivity(t);
 			}

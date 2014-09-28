@@ -28,7 +28,7 @@ public class ListShow extends ActionBarActivity {
 		
 		bookmarkList = (ListView) findViewById(R.id.listbookmark);
 
-		adapter = new ParkingItemAdapter(getApplicationContext(), GlobaVariables.listParking); 
+		adapter = new ParkingItemAdapter(getApplicationContext(), GlobaVariables.history); 
 		
 //		ParkingItemAdapter adapter = new ParkingItemAdapter(this, R.layout.activity_bookmark_parking, GlobaVariables.listParking);		
 		bookmarkList.setAdapter(adapter);
@@ -41,7 +41,7 @@ public class ListShow extends ActionBarActivity {
 				Intent t = new Intent(getApplicationContext(),
 						showInformation.class);
 
-				t.putExtra("MarkerInfo", GlobaVariables.listParking.get(position).getVitri());
+				t.putExtra("MarkerInfo", GlobaVariables.history.get(position).getVitri());
 
 				startActivity(t);
 			}
