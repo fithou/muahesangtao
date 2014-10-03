@@ -1,12 +1,16 @@
 package mhst.parkingmap;
 
 import java.io.File;
+<<<<<<< HEAD
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+=======
+import java.io.IOException;
+>>>>>>> origin/master
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.text.SimpleDateFormat;
@@ -69,7 +73,10 @@ public class AddNewPark extends FragmentActivity {
 	String imageFileName;
 	File mediaStorageDir;
 	ConnectionDetector cd;
+<<<<<<< HEAD
 	String galleryLocation;
+=======
+>>>>>>> origin/master
 	
 	private static final String TAG = AddNewPark.class.getSimpleName();
 	public static final int MEDIA_TYPE_IMAGE = 1;
@@ -84,18 +91,34 @@ public class AddNewPark extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+<<<<<<< HEAD
 		
+=======
+>>>>>>> origin/master
 		if (savedInstanceState != null) {
 			if (savedInstanceState.containsKey(KEY_FILE_URI)) {
 				mFileUri = Uri
 						.parse(savedInstanceState.getString(KEY_FILE_URI));
 			} else {
+<<<<<<< HEAD
 				mFileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
 			}
 		} else {
 			mFileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
 		}
 		// Khởi tạo các View
+=======
+				mFileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a
+																	// file to
+																	// save the
+																	// image
+			}
+		} else {
+			mFileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file
+																// to save the
+																// image
+		}
+>>>>>>> origin/master
 		cd = new ConnectionDetector(getApplicationContext());
 		setContentView(R.layout.add_new_park);
 		etTen = (EditText) findViewById(R.id.etname);
@@ -107,6 +130,7 @@ public class AddNewPark extends FragmentActivity {
 		etThanhpho = (AutoCompleteTextView) findViewById(R.id.etThanhpho);
 		ibCamera = (ImageButton) findViewById(R.id.ibCamera);
 		ibGallery = (ImageButton) findViewById(R.id.ibGallery);
+<<<<<<< HEAD
 		showParkingImage = (ImageView) findViewById(R.id.showParkingImage);	
 		Intent t = getIntent();
 		getLocationStringFromMap = (String) t
@@ -116,6 +140,10 @@ public class AddNewPark extends FragmentActivity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		// Thêm chức năng cho nút Tìm đường
+=======
+		showParkingImage = (ImageView) findViewById(R.id.showParkingImage);
+		
+>>>>>>> origin/master
 		etDuong.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -137,8 +165,11 @@ public class AddNewPark extends FragmentActivity {
 				});
 			}
 		});
+<<<<<<< HEAD
 		
 		//Thêm chức năng Click cho nút tìm Phường
+=======
+>>>>>>> origin/master
 		etPhuong.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -160,9 +191,13 @@ public class AddNewPark extends FragmentActivity {
 				});
 			}
 		});
+<<<<<<< HEAD
 		
 		
 		//Thêm chức năng cho nút tìm Quận
+=======
+
+>>>>>>> origin/master
 		etQuan.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -184,8 +219,11 @@ public class AddNewPark extends FragmentActivity {
 				});
 			}
 		});
+<<<<<<< HEAD
 		
 		//Thêm chức năng cho nút tìm Thành phố
+=======
+>>>>>>> origin/master
 		etThanhpho.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -207,11 +245,15 @@ public class AddNewPark extends FragmentActivity {
 				});
 			}
 		});
+<<<<<<< HEAD
 		
 		
 		etTongsocho = (EditText) findViewById(R.id.etTongso);
 		
 		//Chức năng cho nút camera		
+=======
+		etTongsocho = (EditText) findViewById(R.id.etTongso);
+>>>>>>> origin/master
 		ibCamera.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -226,8 +268,12 @@ public class AddNewPark extends FragmentActivity {
 						CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 			}
 		});
+<<<<<<< HEAD
 		
 		//Chức năng cho nút lấy ảnh từ Gallery 
+=======
+
+>>>>>>> origin/master
 		ibGallery.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -238,6 +284,7 @@ public class AddNewPark extends FragmentActivity {
 						android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 				startActivityForResult(intent, RESULT_LOAD_IMAGE);
 			}
+<<<<<<< HEAD
 		});		
 		getAddressFromGeocode();
 		Button addParking = (Button) findViewById(R.id.them);
@@ -245,6 +292,33 @@ public class AddNewPark extends FragmentActivity {
 		/*
 		 * Chức năng cho nút thêm một Parking mới
 		 */
+=======
+		});
+
+		Intent t = getIntent();
+		this.setTitle("Thêm bãi gửi xe mới");
+
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+
+		getLocationStringFromMap = (String) t
+				.getSerializableExtra("parkingLocation");
+		arr = getLocationStringFromMap.split("_");
+		String geo = "";
+		Geocoder gc = new Geocoder(getApplicationContext());
+		List<Address> address;
+		try {
+			address = gc.getFromLocation(Float.parseFloat(arr[0]),
+					Float.parseFloat(arr[1]), 5);
+			Address place = address.get(0);
+			etThanhpho.setText(place.getAdminArea().toString());
+			etQuan.setText(place.getSubAdminArea().toString());
+			etPhuong.setText(place.getSubLocality().toString());
+			etDuong.setText(place.getThoroughfare().toString());
+		} catch (Exception e) {
+
+		}		
+		Button addParking = (Button) findViewById(R.id.them);
+>>>>>>> origin/master
 		addParking.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -253,7 +327,15 @@ public class AddNewPark extends FragmentActivity {
 				Entity.ParkingLocation pl = new ParkingLocation();
 				TestAdapter mDbHelper = new TestAdapter(getApplicationContext());
 				mDbHelper.createDatabase();
+<<<<<<< HEAD
 				mDbHelper.open();				
+=======
+				mDbHelper.open();
+				if (cd.isConnectingToInternet()) {
+					int responseText = imageOnServer.uploadFile(mediaStorageDir.getPath() + "/" + imageFileName);
+					//Toast.makeText(getApplicationContext(), responseText + mediaStorageDir.getPath() + "/" + imageFileName, Toast.LENGTH_LONG).show();					
+				}				
+>>>>>>> origin/master
 				if (mDbHelper.AddParking(etTen.getText().toString(), etSoDT
 						.getText().toString(),
 						etTongsocho.getText().toString(), 1, etSonha.getText() + " - " + etDuong.getText()
@@ -270,7 +352,11 @@ public class AddNewPark extends FragmentActivity {
 					pl.setLike(0);					
 					pl.setVitri(getLocationStringFromMap);
 					pl.setTen_parking(etTen.getText().toString());
+<<<<<<< HEAD
 					pl.setImageUri(imageFileName);
+=======
+					pl.setImageUri(imageUri);
+>>>>>>> origin/master
 					pl.setTong_socho(etTongsocho.getText().toString());
 					
 					GlobaVariables.listParking.add(pl);
@@ -287,21 +373,28 @@ public class AddNewPark extends FragmentActivity {
 		});
 	}
 
+<<<<<<< HEAD
 	/*
 	 * Lấy ra Uri của file Media
 	 * Input : kiểu của file Media
 	 * Output : Uri của file
 	 */
+=======
+>>>>>>> origin/master
 	private Uri getOutputMediaFileUri(int type) {
 		File file = getOutputMediaFile(type);
 		Assert.assertNotNull("getOutputMediaFileUri file", file);
 		return Uri.fromFile(file);
 	}
+<<<<<<< HEAD
 	
 	/*
 	 * Lấy ra file Media
 	 * Input : kiểu của file Media 
 	 */
+=======
+
+>>>>>>> origin/master
 	private File getOutputMediaFile(int type) {
 		// To be safe, you should check that the SDCard is mounted
 		// using Environment.getExternalStorageState() before doing this.
@@ -335,7 +428,10 @@ public class AddNewPark extends FragmentActivity {
 				.format(new Date());
 		File mediaFile;
 		if (type == MEDIA_TYPE_IMAGE) {
+<<<<<<< HEAD
 			
+=======
+>>>>>>> origin/master
 			mediaFile = new File(mediaStorageDir.getPath() + File.separator
 					+ "IMG_" + timeStamp + ".jpg");
 			imageFileName = "IMG_" + timeStamp + ".jpg";
@@ -376,10 +472,15 @@ public class AddNewPark extends FragmentActivity {
 				imageUri = mFileUri.toString();
 				Log.d("From Camera", imageUri);
 				File file = getFileFromUri(imageUri);
+<<<<<<< HEAD
 				resizeImageSmaller(file);
 				if (file != null) {
 					Bitmap bm = decodeSampledBitmapFromFile(file, 500, 500);
 					
+=======
+				if (file != null) {
+					Bitmap bm = decodeSampledBitmapFromFile(file, 500, 500);
+>>>>>>> origin/master
 					imageView.setImageBitmap(bm);
 				}
 			} else if (resultCode == RESULT_CANCELED) {
@@ -397,6 +498,7 @@ public class AddNewPark extends FragmentActivity {
 	            cursor.moveToFirst();
 	 
 	            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+<<<<<<< HEAD
 	            imageUri = "file://" + cursor.getString(columnIndex);	            
 	            galleryLocation = cursor.getString(columnIndex);
 	            Log.d("galleryLocation", galleryLocation);
@@ -404,24 +506,38 @@ public class AddNewPark extends FragmentActivity {
 	            imageFileName = arr[arr.length-1];
 	            copyFile(cursor.getString(columnIndex) ,imageFileName ,mediaStorageDir.getPath());
 	            Log.d("Image Name", imageFileName);
+=======
+	            imageUri = "file://" + cursor.getString(columnIndex);
+	            imageFileName = cursor.getString(columnIndex);
+>>>>>>> origin/master
 	            cursor.close();
 	            Log.d("From Gallery", imageUri);
 	            File file = getFileFromUri(imageUri);
 	            ImageView imageView = (ImageView) findViewById(R.id.showParkingImage);
 				if (file != null) {
+<<<<<<< HEAD
 					Bitmap bm = decodeSampledBitmapFromFile(file, 500, 500);								
 					imageView.setImageBitmap(bm);
 				}
 				
+=======
+					Bitmap bm = decodeSampledBitmapFromFile(file, 500, 500);
+					imageView.setImageBitmap(bm);
+				}
+>>>>>>> origin/master
 	            /*ImageView imageView = (ImageView) findViewById(R.id.imgView);
 	            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));*/
 			}
 		}
 	}
+<<<<<<< HEAD
 	
 	/*
 	 * Chuyển file sang dạng Bitmap
 	 */
+=======
+
+>>>>>>> origin/master
 	private Bitmap decodeSampledBitmapFromFile(File file, int reqWidth,
 			int reqHeight) {
 		// TODO Auto-generated method stub
@@ -438,10 +554,14 @@ public class AddNewPark extends FragmentActivity {
 		options.inJustDecodeBounds = false;
 		return BitmapFactory.decodeFile(file.getAbsolutePath(), options);
 	}
+<<<<<<< HEAD
 	
 	/*
 	 * Tạo file từ Uri
 	 */
+=======
+
+>>>>>>> origin/master
 	private File getFileFromUri(String mFileUri) {
 		// TODO Auto-generated method stub
 		if (mFileUri != null) {
@@ -467,9 +587,13 @@ public class AddNewPark extends FragmentActivity {
 		return null;
 	}
 
+<<<<<<< HEAD
 	/*
 	 * Định lại kích thước file ảnh
 	 */
+=======
+	/** Calculate the scaling factor */
+>>>>>>> origin/master
 	public static int calculateInSampleSize(BitmapFactory.Options options,
 			int reqWidth, int reqHeight) {
 		// Raw height and width of image
@@ -494,6 +618,7 @@ public class AddNewPark extends FragmentActivity {
 
 		return inSampleSize;
 	}
+<<<<<<< HEAD
 	/*
 	 * Lấy dữ liệu về Đường - Phường - Quận - Thành phố từ Location xác định
 	 */
@@ -571,4 +696,6 @@ public class AddNewPark extends FragmentActivity {
 		}
 	}
 
+=======
+>>>>>>> origin/master
 }

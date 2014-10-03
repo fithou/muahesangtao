@@ -1,10 +1,13 @@
 package mhst.parkingmap;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+=======
+>>>>>>> origin/master
 import org.w3c.dom.Document;
 
 import parkingPlaces.ConnectionDetector;
@@ -18,6 +21,10 @@ import Entity.ObjectDrawerItem;
 import Entity.ParkingLocation;
 import Globa.GlobaVariables;
 
+<<<<<<< HEAD
+=======
+import android.annotation.TargetApi;
+>>>>>>> origin/master
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
@@ -29,6 +36,10 @@ import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+<<<<<<< HEAD
+=======
+import android.os.Build;
+>>>>>>> origin/master
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
@@ -99,16 +110,23 @@ public class MainActivity extends ActionBarActivity implements
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		/*
 		 * Khi ấn phím Back 2 lần thì ứng dụng sẽ tự động tắt
 		 */
+=======
+>>>>>>> origin/master
 	    if (doubleBackToExitPressedOnce) {
 	        super.onBackPressed();
 	        return;
 	    }
 
 	    this.doubleBackToExitPressedOnce = true;
+<<<<<<< HEAD
 	    Toast.makeText(this, "Nhấn Back lần nữa để thoát ứng dụng!", Toast.LENGTH_SHORT).show();
+=======
+	    Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+>>>>>>> origin/master
 
 	    new Handler().postDelayed(new Runnable() {
 
@@ -119,8 +137,13 @@ public class MainActivity extends ActionBarActivity implements
 	    }, 2000);
 	}
 
+<<<<<<< HEAD
 	View searchList; //Danh sách gợi ý tìm kiếm
 	Geocoder gc; // Định nghĩa 1 biến Geocode
+=======
+	View searchList;
+	Geocoder gc;
+>>>>>>> origin/master
 	private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
 
 	// Milliseconds per second
@@ -135,10 +158,17 @@ public class MainActivity extends ActionBarActivity implements
 	// A fast frequency ceiling in milliseconds
 	private static final long FASTEST_INTERVAL = MILLISECONDS_PER_SECOND
 			* FASTEST_INTERVAL_IN_SECONDS;
+<<<<<<< HEAD
 	boolean mUpdatesRequested; //kiểm tra khi có yêu cầu update vị trí hiện tại
 	Menu menu; // Định nghĩa 1 menu
 	LatLngBounds lb; // Định nghĩa khoang vùng tọa độ
 	TestAdapter mDbHelper; //Biến thao tác với CSDL
+=======
+	boolean mUpdatesRequested;
+	Menu menu;
+	LatLngBounds lb;
+	TestAdapter mDbHelper;
+>>>>>>> origin/master
 
 	// Define an object that holds accuracy and frequency parameters
 	LocationRequest mLocationRequest;
@@ -193,11 +223,20 @@ public class MainActivity extends ActionBarActivity implements
 		mDbHelper = new TestAdapter(getApplicationContext());
 		mDbHelper.createDatabase();
 		mDbHelper.open();
+<<<<<<< HEAD
 		
 		cd = new ConnectionDetector(getApplicationContext()); //Kiểm tra khi có kết nối mạng
 		googlePlaces = new GooglePlaces();
 
 		myLocation = new LocationClient(this, this, this); // Vị trí hiện tại của thiết bị
+=======
+		// creating GPS Class object
+
+		cd = new ConnectionDetector(getApplicationContext());
+		googlePlaces = new GooglePlaces();
+
+		myLocation = new LocationClient(this, this, this);
+>>>>>>> origin/master
 
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -218,40 +257,65 @@ public class MainActivity extends ActionBarActivity implements
 			}
 		};
 
+<<<<<<< HEAD
 		/*
 		 * Fill dữ liệu từ DB vào list
 		 */
 		if (GlobaVariables.bookmarkParking.size() == 0) {
+=======
+		if (GlobaVariables.bookmarkParking.isEmpty()) {
+>>>>>>> origin/master
 			GlobaVariables.bookmarkParking = mDbHelper.getAllBoomarkParking();
 			// Toast.makeText(getApplicationContext(), "Loaded Parking",
 			// Toast.LENGTH_LONG).show();
 		}
 
+<<<<<<< HEAD
 		if (GlobaVariables.listParking.size() == 0) {
+=======
+		if (GlobaVariables.listParking.isEmpty()) {
+>>>>>>> origin/master
 			GlobaVariables.listParking = mDbHelper.getAllParking();
 			// Toast.makeText(getApplicationContext(), "Loaded Parking",
 			// Toast.LENGTH_LONG).show();
 		}
+<<<<<<< HEAD
 		if (GlobaVariables.getDuong.size() == 0) {
+=======
+		if (GlobaVariables.getDuong.isEmpty()) {
+>>>>>>> origin/master
 			GlobaVariables.getDuong = mDbHelper.getDuong();
 			// Toast.makeText(getApplicationContext(), "Loaded Duong",
 			// Toast.LENGTH_LONG).show();
 		}
+<<<<<<< HEAD
 		if (GlobaVariables.getPhuong.size() == 0) {
+=======
+		if (GlobaVariables.getPhuong.isEmpty()) {
+>>>>>>> origin/master
 			GlobaVariables.getPhuong = mDbHelper.getPhuong();
 			// Toast.makeText(getApplicationContext(), "Loaded Phuong",
 			// Toast.LENGTH_LONG).show();
 		}
+<<<<<<< HEAD
 		if (GlobaVariables.getQuan.size() == 0) {
+=======
+		if (GlobaVariables.getQuan.isEmpty()) {
+>>>>>>> origin/master
 			GlobaVariables.getQuan = mDbHelper.getQuan();
 			// Toast.makeText(getApplicationContext(), "Loaded Quan",
 			// Toast.LENGTH_LONG).show();
 		}
+<<<<<<< HEAD
 		if (GlobaVariables.getTinhthanh.size() == 0) {
+=======
+		if (GlobaVariables.getTinhthanh.isEmpty()) {
+>>>>>>> origin/master
 			GlobaVariables.getTinhthanh = mDbHelper.getTinhthanh();
 			// Toast.makeText(getApplicationContext(), "Loaded Thanh Pho",
 			// Toast.LENGTH_LONG).show();
 		}
+<<<<<<< HEAD
 		if (GlobaVariables.getParkingLike.size() == 0) {
 			GlobaVariables.getParkingLike = mDbHelper.getListParkingLike();
 			// Toast.makeText(getApplicationContext(), "Loaded Thanh Pho",
@@ -268,6 +332,13 @@ public class MainActivity extends ActionBarActivity implements
 		 */
 		getResources().getStringArray(R.array.navigation_drawer_items_array);
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
+=======
+
+		getResources().getStringArray(R.array.navigation_drawer_items_array);
+
+		mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+>>>>>>> origin/master
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		// getActionBar().setHomeButtonEnabled(true);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -276,6 +347,10 @@ public class MainActivity extends ActionBarActivity implements
 				R.layout.listview_item_row, drawerItem);
 		drawerItem[0] = new ObjectDrawerItem(R.drawable.abc_ic_search,
 				"Tìm kiếm");
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 		drawerItem[1] = new ObjectDrawerItem(R.drawable.ic_action_new,
 				"Thêm địa điểm");
 		drawerItem[2] = new ObjectDrawerItem(R.drawable.ic_action_time,
@@ -283,7 +358,11 @@ public class MainActivity extends ActionBarActivity implements
 		drawerItem[3] = new ObjectDrawerItem(R.drawable.ic_action_view_as_list,
 				"Đánh dấu");
 		drawerItem[4] = new ObjectDrawerItem(R.drawable.ic_action_settings,
+<<<<<<< HEAD
 				"Cài đặt GPS");
+=======
+				"Cài đặt");
+>>>>>>> origin/master
 		drawerItem[5] = new ObjectDrawerItem(R.drawable.ic_action_refresh,
 				"Đồng bộ dữ liệu");
 		drawerItem[6] = new ObjectDrawerItem(R.drawable.ic_action_about,
@@ -295,8 +374,15 @@ public class MainActivity extends ActionBarActivity implements
 		mTitle = mDrawerTitle = getTitle();
 
 		/*
+<<<<<<< HEAD
 		 * Hiển thị bản đồ trên Fragment
 		 */
+=======
+		 * ========================================= Menu
+		 * ================================
+		 */
+
+>>>>>>> origin/master
 		MapFragment mMapFragment = MapFragment.newInstance();
 		FragmentTransaction fragmentTransaction = getFragmentManager()
 				.beginTransaction();
@@ -387,21 +473,37 @@ public class MainActivity extends ActionBarActivity implements
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
+<<<<<<< HEAD
 				/*
 				 * Fill dữ liệu vào list tìm kiếm để giúp người dùng tìm kiếm dễ dàng hơn
 				 */
+=======
+				// Toast.makeText(getApplicationContext(),
+				// forSearch.getItemAtPosition(position).toString(),
+				// Toast.LENGTH_LONG).show();
+>>>>>>> origin/master
 
 				try {
 					Address place = gc
 							.getFromLocationName(
 									forSearch.getItemAtPosition(position)
 											.toString(), 1).get(0);
+<<<<<<< HEAD
 					Log.d("Address", place.getAdminArea());
+=======
+>>>>>>> origin/master
 					LatLng l = new LatLng(place.getLatitude(), place
 							.getLongitude());
 					mmap.animateCamera(CameraUpdateFactory
 							.newLatLngZoom(l, 15f));
+<<<<<<< HEAD
 					Marker m = mmap.addMarker(new MarkerOptions().position(l));
+=======
+					Marker m = mmap.addMarker(new MarkerOptions().position(l)
+							.title(forSearch.getItemAtPosition(position)
+									.toString()));
+
+>>>>>>> origin/master
 					
 				} catch (Exception e) {
 
@@ -415,7 +517,11 @@ public class MainActivity extends ActionBarActivity implements
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+<<<<<<< HEAD
 				searchList.setVisibility(View.VISIBLE); //Khi click vào nút tìm kiếm, danh sách gợi ý sẽ hiện ra
+=======
+				searchList.setVisibility(View.VISIBLE);
+>>>>>>> origin/master
 			}
 		});
 
@@ -424,7 +530,11 @@ public class MainActivity extends ActionBarActivity implements
 			@Override
 			public boolean onClose() {
 				// TODO Auto-generated method stub
+<<<<<<< HEAD
 				searchList.setVisibility(View.INVISIBLE); //Danh sách tìm kiếm biến mất khi Search đóng
+=======
+				searchList.setVisibility(View.INVISIBLE);
+>>>>>>> origin/master
 				return false;
 			}
 		});
@@ -434,15 +544,24 @@ public class MainActivity extends ActionBarActivity implements
 			@Override
 			public boolean onQueryTextSubmit(String query) {
 				// TODO Auto-generated method stub
+<<<<<<< HEAD
 				searchView.onActionViewCollapsed(); // Đóng search list khi tìm kiếm xong
 				searchList.setVisibility(View.INVISIBLE); // Ẩn searchview khi tìm kiếm xong
+=======
+				searchView.onActionViewCollapsed();
+				searchList.setVisibility(View.INVISIBLE);
+>>>>>>> origin/master
 				return true;
 			}
 
 			@Override
 			public boolean onQueryTextChange(String query) {
 				// TODO Auto-generated method stub
+<<<<<<< HEAD
 				forSearchAdapter.getFilter().filter(query); //Tìm kiếm gợi ý theo chuỗi nhập vào
+=======
+				forSearchAdapter.getFilter().filter(query);
+>>>>>>> origin/master
 				return false;
 			}
 
@@ -483,16 +602,23 @@ public class MainActivity extends ActionBarActivity implements
 		if (mUpdatesRequested) {
 			myLocation.requestLocationUpdates(mLocationRequest, this);
 		}
+<<<<<<< HEAD
 		
 		// Đưa bản đồ từ Fragment vào biến mmap để thao tác
+=======
+
+>>>>>>> origin/master
 		mmap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
 				.getMap();
 		if (mmap != null) {
 			mmap.setMyLocationEnabled(true);
 		}
+<<<<<<< HEAD
 		/*
 		 * Khi LongClick trên 1 vị trí của bản đồ, nó thực hiện chức năng thêm 1 parking tại vị trí đó
 		 */
+=======
+>>>>>>> origin/master
 		mmap.setOnMapLongClickListener(new OnMapLongClickListener() {
 
 			@Override
@@ -504,10 +630,13 @@ public class MainActivity extends ActionBarActivity implements
 				startActivity(t);
 			}
 		});
+<<<<<<< HEAD
 		
 		/*
 		 * Khi click vào InfoWindow của 1 Marker, sẽ đưa bạn xem thông tin chi tiết của vị trí đó
 		 */
+=======
+>>>>>>> origin/master
 		mmap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
 
 			@Override
@@ -519,10 +648,13 @@ public class MainActivity extends ActionBarActivity implements
 				startActivity(t);
 			}
 		});
+<<<<<<< HEAD
 		
 		/*
 		 * Click vào Marker, Info window sẽ hiện ra
 		 */
+=======
+>>>>>>> origin/master
 
 		mmap.setOnMarkerClickListener(new OnMarkerClickListener() {
 
@@ -530,17 +662,29 @@ public class MainActivity extends ActionBarActivity implements
 			public boolean onMarkerClick(Marker marker) {
 				// TODO Auto-generated method stub
 				// marker.showInfoWindow();
+<<<<<<< HEAD
 				
 				if (marker.getTitle() != null) {
 					marker.showInfoWindow();
 				}
+=======
+
+				marker.showInfoWindow();
+
+>>>>>>> origin/master
 				return true;
 			}
 		});
 
 		ls = myLocation.getLastLocation();
+<<<<<<< HEAD
 
 		//Định dạng form hiển thị cho InfoWindow
+=======
+		// LatLngBounds bounds =
+		// mmap.getProjection().getVisibleRegion().latLngBounds;
+
+>>>>>>> origin/master
 		mmap.setInfoWindowAdapter(new InfoWindowAdapter() {
 
 			@Override
@@ -574,8 +718,11 @@ public class MainActivity extends ActionBarActivity implements
 
 		Intent t = getIntent();
 		String s = (String) t.getSerializableExtra("comeBackID");
+<<<<<<< HEAD
 		
 		//Khi camera thay đổi, những bãi đỗ xe có tọa độ trong vùng nhìn thấy của màn hình 
+=======
+>>>>>>> origin/master
 		mmap.setOnCameraChangeListener(new OnCameraChangeListener() {
 
 			@Override
@@ -597,7 +744,10 @@ public class MainActivity extends ActionBarActivity implements
 								.icon(BitmapDescriptorFactory
 										.fromResource(R.drawable.a))
 								.snippet(park.getVitri()));
+<<<<<<< HEAD
 						
+=======
+>>>>>>> origin/master
 					}
 
 				}
@@ -606,9 +756,15 @@ public class MainActivity extends ActionBarActivity implements
 		if (s != null) {
 			String arr[] = s.split("_");
 			LatLng myLocation = new LatLng(Float.parseFloat(arr[0]),
+<<<<<<< HEAD
 					Float.parseFloat(arr[1]));			
 			mmap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation,
 					15f));	
+=======
+					Float.parseFloat(arr[1]));
+			mmap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation,
+					15f));
+>>>>>>> origin/master
 
 			// mmap.getCameraPosition().fromLatLngZoom(myLocation, 5f);
 		} else if (ls != null) {
@@ -661,15 +817,22 @@ public class MainActivity extends ActionBarActivity implements
 		private void selectItem(int position) {
 			switch (position) {
 			case 0:
+<<<<<<< HEAD
 				mDrawerLayout.closeDrawers();
 				break;
 
 			case 1: //Hướng dẫn thêm vị trí mới
+=======
+				break;
+
+			case 1:
+>>>>>>> origin/master
 				Toast.makeText(getApplicationContext(),
 						"Nhấn và giữ vào bản đồ để thêm vị trí mới!",
 						Toast.LENGTH_SHORT).show();
 				mDrawerLayout.closeDrawers();
 				break;
+<<<<<<< HEAD
 			case 2: //Mở danh sách lịch sử
 				Intent t = new Intent(getApplicationContext(), ListShow.class);
 				startActivity(t);
@@ -703,12 +866,40 @@ public class MainActivity extends ActionBarActivity implements
 
 			default:
 				Toast.makeText(getApplicationContext(), "Tính năng đang phát triển!",
+=======
+			case 2:
+				Intent t = new Intent(getApplicationContext(), ListShow.class);
+				startActivity(t);
+				break;
+			case 3:
+				Intent bookmarkIntent = new Intent(getApplicationContext(),
+						BookmarkParking.class);
+				startActivity(bookmarkIntent);
+				break;
+			case 4:
+				Intent settingGPSIntent = new Intent(getApplicationContext(),
+						SettingsGPS.class);
+				startActivity(settingGPSIntent);
+				break;
+			case 5:
+				syncSQLiteServer();
+				break;
+			case 6:
+				Intent aboutIntent = new Intent(getApplicationContext(),
+						About.class);
+				startActivity(aboutIntent);
+				break;
+
+			default:
+				Toast.makeText(getApplicationContext(), "Developing",
+>>>>>>> origin/master
 						Toast.LENGTH_LONG).show();
 				mDrawerLayout.closeDrawers();
 				break;
 			}
 
 		}
+<<<<<<< HEAD
 
 		private void reloadActivity() {
 			// TODO Auto-generated method stub
@@ -718,6 +909,8 @@ public class MainActivity extends ActionBarActivity implements
 			Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 			startActivity(intent);
 		}
+=======
+>>>>>>> origin/master
 	}
 
 	@Override
@@ -761,12 +954,22 @@ public class MainActivity extends ActionBarActivity implements
 	}
 
 	public void syncSQLiteServer() {
+<<<<<<< HEAD
 		/*
 		 * Đồng bộ dữ liệu từ máy người dùng lên server
 		 */
 		
 		AsyncHttpClient client = new AsyncHttpClient();
 		RequestParams params = new RequestParams();
+=======
+		// Create AsycHttpClient object
+		AsyncHttpClient client = new AsyncHttpClient();
+		RequestParams params = new RequestParams();
+		// TestAdapter mDbHelper = new TestAdapter(getApplicationContext());
+
+		// ArrayList<ParkingDB> list = (ArrayList<ParkingDB>)
+		// mDbHelper.getAllParkingDB();
+>>>>>>> origin/master
 		params.put("park", mDbHelper.composeJSONfromSQLite());
 		params.put("status", mDbHelper.composeJSONfromSQLiteStatus());
 		Log.d("info", mDbHelper.composeJSONfromSQLite());
@@ -787,21 +990,35 @@ public class MainActivity extends ActionBarActivity implements
 							String content) {
 						if (statusCode == 404) {
 							Toast.makeText(getApplicationContext(),
+<<<<<<< HEAD
 									"Máy chủ hệ thống đang bảo trì!",
 									Toast.LENGTH_LONG).show();
 						} else if (statusCode == 500) {
 							Toast.makeText(getApplicationContext(),
 									"Máy chủ hệ thống đang bảo trì!",
+=======
+									"Requested resource not found",
+									Toast.LENGTH_LONG).show();
+						} else if (statusCode == 500) {
+							Toast.makeText(getApplicationContext(),
+									"Something went wrong at server end",
+>>>>>>> origin/master
 									Toast.LENGTH_LONG).show();
 						} else {
 							Toast.makeText(
 									getApplicationContext(),
+<<<<<<< HEAD
 									"Kiểm tra lại kết nối Internet!",
+=======
+									statusCode
+											+ "Unexpected Error occcured! [Most common Error: Device might not be connected to Internet]",
+>>>>>>> origin/master
 									Toast.LENGTH_LONG).show();
 						}
 					}
 				});
 	}
+<<<<<<< HEAD
 	public void  getDBfromServer() {
 		/*
 		 * Tải dữ liệu trên server về máy người dùng
@@ -876,5 +1093,7 @@ public class MainActivity extends ActionBarActivity implements
 			e.printStackTrace();
 		}
 	}
+=======
+>>>>>>> origin/master
 
 }

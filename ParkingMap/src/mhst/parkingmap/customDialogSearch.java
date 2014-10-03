@@ -31,9 +31,12 @@ public class customDialogSearch extends Dialog {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		/*
 		 * TẠO Adapter cho cho các AutoCompleteTextView
 		 */
+=======
+>>>>>>> origin/master
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dialog_search_layout);
 		EditText etCustomDialog = (EditText) findViewById(R.id.evCustomDialog);

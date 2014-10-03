@@ -1,19 +1,25 @@
 package mhst.parkingmap;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.net.URI;
+=======
+>>>>>>> origin/master
 import java.util.List;
 
 
 import Entity.ParkingLocation;
 import android.annotation.SuppressLint;
 import android.content.Context;
+<<<<<<< HEAD
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
+=======
+>>>>>>> origin/master
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +43,7 @@ public class ParkingItemAdapter extends ArrayAdapter<ParkingLocation>{
 	@SuppressLint("ViewHolder")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+<<<<<<< HEAD
 		File mediaStorageDir;
 		// TODO Auto-generated method stub
 		if (Build.VERSION.SDK_INT > 8) {
@@ -46,6 +53,9 @@ public class ParkingItemAdapter extends ArrayAdapter<ParkingLocation>{
 			mediaStorageDir = new File(
 					Environment.getExternalStorageDirectory(), "Pictures");
 		}
+=======
+		// TODO Auto-generated method stub
+>>>>>>> origin/master
 		LayoutInflater inflater = (LayoutInflater) context
 		        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		    View rowView = inflater.inflate(R.layout.window_info_layout, parent, false);
@@ -54,6 +64,7 @@ public class ParkingItemAdapter extends ArrayAdapter<ParkingLocation>{
 		    ImageView ivAnh = (ImageView) rowView.findViewById(R.id.ivAnh);
 		    tvTen.setText(data.get(position).getTen_parking());
 		    tvDiachi.setText(data.get(position).getDiachi());
+<<<<<<< HEAD
 		    ivAnh.setImageResource(R.drawable.giuxe);
 		    // Change the icon for Windows and iPhone
 		    File file;
@@ -145,5 +156,12 @@ public class ParkingItemAdapter extends ArrayAdapter<ParkingLocation>{
 
 		return resizedBitmap;
 	}
+=======
+		    // Change the icon for Windows and iPhone
+		    ivAnh.setImageResource(R.drawable.giuxe);
+
+		    return rowView;
+	}
+>>>>>>> origin/master
 
 }

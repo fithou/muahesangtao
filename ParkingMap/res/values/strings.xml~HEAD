@@ -31,12 +31,13 @@
     <string name="sSC">Số chỗ</string>
     <string name="sSN">Số nhà</string>
     <string name="title_activity_bookmark_parking">Địa điểm đánh dấu</string>
-    <string name="title_activity_list_show">Danh sách</string>
+    <string name="title_activity_list_show">Lịch sử</string>
     <string name="prov">Hello</string>
     <string name="cannot_get_gps_service">ListShow</string>
     <string name="title_activity_settings_gps">Cài đặt GPS</string>
     <string name="title_activity_splash">Parking Map</string>
     <string name="title_activity_about">Thông tin</string>
     <string name="title_activity_search_result">SearchResultActivity</string>
+    <string name="action_delete_bookmark">Xóa danh sách</string>
 
 </resources>

@@ -40,6 +40,10 @@
                         android:layout_marginTop="3dp"
                         android:text=""
                         android:textColor="#2e6ddf" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
                 </LinearLayout>
 
                 <LinearLayout
@@ -58,6 +62,7 @@
                         android:id="@+id/tvDiachi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+<<<<<<< HEAD
                         android:text=""
                         android:textColor="@color/grey" />
                 </LinearLayout>
@@ -67,6 +72,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:orientation="horizontal" >
+=======
+                        android:text="" 
+                        android:textColor="@color/grey"/>
+                </LinearLayout>
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginBottom="5dp"
+                   android:orientation="horizontal" >
+>>>>>>> origin/master
 
                     <ImageView
                         android:layout_width="30dp"
@@ -81,7 +97,12 @@
                         android:layout_marginTop="5dp"
                         android:text=""
                         android:textColor="@color/grey" />
+<<<<<<< HEAD
                 </LinearLayout>
+=======
+
+                </LinearLayout>                
+>>>>>>> origin/master
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -101,6 +122,10 @@
                         android:layout_marginTop="5dp"
                         android:text=""
                         android:textColor="@color/grey" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
                 </LinearLayout>
             </LinearLayout>
 
@@ -111,6 +136,10 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:src="@drawable/bluecar" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
         </LinearLayout>
 
         <fragment
@@ -137,15 +166,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+<<<<<<< HEAD
                 android:background="@drawable/border_right"
+=======
+>>>>>>> origin/master
                 android:src="@drawable/call_red" />
 
             <ImageView
                 android:id="@+id/ivBookmark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_weight="1"
                 android:background="@drawable/border_right"
+=======
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/border_left_right"
+>>>>>>> origin/master
                 android:src="@drawable/bookmark_red" />
 
             <ImageView
@@ -153,7 +191,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+<<<<<<< HEAD
                 android:background="@drawable/border_right"
+=======
+                android:background="@drawable/border_left_right"
+>>>>>>> origin/master
                 android:clickable="false"
                 android:src="@drawable/like_gray" />
 
@@ -163,12 +205,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@drawable/direction" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="39dp"
             android:orientation="horizontal"
+<<<<<<< HEAD
             android:paddingTop="10dp"
             android:weightSum="9" >
 
@@ -187,6 +234,21 @@
                 android:layout_weight="8"
                 android:text=""
                 android:textColor="@color/grey" />
+=======
+            android:paddingTop="10dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đánh giá" />
+
+            <RatingBar
+                android:id="@+id/ratingBar1"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp" />
+>>>>>>> origin/master
         </LinearLayout>
     </LinearLayout>
 

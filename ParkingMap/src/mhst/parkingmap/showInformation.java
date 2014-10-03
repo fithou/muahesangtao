@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+<<<<<<< HEAD
 import java.io.Serializable;
+=======
+>>>>>>> origin/master
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
@@ -29,7 +32,10 @@ import com.loopj.android.http.RequestParams;
 import DataBaseHandler.DataBaseHelper;
 import DataBaseHandler.TestAdapter;
 import DataBaseHandler.imageOnServer;
+<<<<<<< HEAD
 import Entity.ParkingLike;
+=======
+>>>>>>> origin/master
 import Entity.ParkingLocation;
 import Entity.Trangthai;
 import Globa.GlobaVariables;
@@ -88,11 +94,15 @@ public class showInformation extends FragmentActivity implements
 	TestAdapter mDbHelper;
 	ParkingLocation bookmark;
 	String MACaddress;
+<<<<<<< HEAD
 	ParkingLike parkingLike;
 	File mediaStorageDir;
 	boolean checkLike;
 	boolean checkExist;
 	String imageName;
+=======
+	File mediaStorageDir;
+>>>>>>> origin/master
 	ConnectionDetector cd;
 
 	@Override
@@ -109,12 +119,16 @@ public class showInformation extends FragmentActivity implements
 		TextView tvDienthoai = (TextView) findViewById(R.id.tvDienthoai);
 		TextView tvDiachi = (TextView) findViewById(R.id.tvDiachi);
 		TextView tvSocho = (TextView) findViewById(R.id.tvSocho);
+<<<<<<< HEAD
 		TextView tvSolike = (TextView) findViewById(R.id.tvSolike);
+=======
+>>>>>>> origin/master
 		ivLike = (ImageView) findViewById(R.id.ivLike);
 		ivBookmark = (ImageView) findViewById(R.id.ivBookmark);
 		ivDirection = (ImageView) findViewById(R.id.ivDirection);
 		ivCall = (ImageView) findViewById(R.id.ivCall);
 		cd = new ConnectionDetector(getApplicationContext());
+<<<<<<< HEAD
 		checkLike = false;
 		checkExist = false;
 
@@ -141,6 +155,9 @@ public class showInformation extends FragmentActivity implements
 		}
 
 		// Nếu có mạng sẽ lấy ra thông tin địa chỉ MAC của máy
+=======
+
+>>>>>>> origin/master
 		if (cd.isConnectingToInternet()) {
 			WifiManager manager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
 			WifiInfo info = manager.getConnectionInfo();
@@ -148,11 +165,14 @@ public class showInformation extends FragmentActivity implements
 			ivLike.setImageResource(R.drawable.likered);
 			ivLike.setClickable(true);
 		}
+<<<<<<< HEAD
 		// Nếu like thì nút Like sẽ có màu xanh
 		if (checkLike) {
 			ivLike.setImageResource(R.drawable.likeblue);
 		}
 
+=======
+>>>>>>> origin/master
 		String state = Environment.getExternalStorageState();
 		Assert.assertTrue("external media is mounted",
 				TextUtils.equals(state, Environment.MEDIA_MOUNTED));
@@ -170,12 +190,16 @@ public class showInformation extends FragmentActivity implements
 		parkingLocation = new LatLng(Float.parseFloat(arr[0]),
 				Float.parseFloat(arr[1]));
 
+<<<<<<< HEAD
 		// HIển thị bản đồ ở Fragment
+=======
+>>>>>>> origin/master
 		MapFragment mMapFragment = MapFragment.newInstance();
 		FragmentTransaction fragmentTransaction = getFragmentManager()
 				.beginTransaction();
 
 		fragmentTransaction.add(R.id.showmap, mMapFragment);
+<<<<<<< HEAD
 
 		
 		ImageView anh = (ImageView) findViewById(R.id.imageView1);
@@ -242,6 +266,68 @@ public class showInformation extends FragmentActivity implements
 		}
 
 		// Nếu có số Phone thì nút gọi điện sẽ có màu xanh
+=======
+		RatingBar danhgia = (RatingBar) findViewById(R.id.ratingBar1);
+		ImageView anh = (ImageView) findViewById(R.id.imageView1);
+		anh.setImageResource(R.drawable.giuxe);
+		danhgia.setClickable(false);
+		for (ParkingLocation p : GlobaVariables.listParking) {
+			if (p.getVitri().equals(s)) {
+				// danhgia.setRating(p.getDanhgia());
+				bookmark = new ParkingLocation(p.getMa_parking(),
+						p.getTen_parking(), p.getSdt(), p.getDiachi(),
+						p.getTong_socho(), p.getLike(), p.getImageUri(),
+						p.getVitri());
+				tvTen.setText(p.getTen_parking());
+				tvDiachi.setText(p.getDiachi());
+				tvDienthoai.setText(p.getSdt());
+				phoneNum = p.getSdt();
+				tvSocho.setText(p.getTong_socho() + " ");
+				for (ParkingLocation parkingLocation : GlobaVariables.history) {
+					if (s.equals(parkingLocation.getVitri())) {
+						break;
+					}else {
+						GlobaVariables.history.add(new ParkingLocation(p.getMa_parking(),
+								p.getTen_parking(), p.getSdt(), p.getDiachi(),
+								p.getTong_socho(), p.getLike(), p.getImageUri(),
+								p.getVitri()));						
+					}
+				}
+				
+				File file;
+				file = getFileFromUri("file://" + mediaStorageDir.getPath()
+						+ "/" + p.getImageUri());
+
+				if (file == null && cd.isConnectingToInternet()) {
+
+					try {
+						imageOnServer.downloadFileFromServer(p.getImageUri());
+					} catch (MalformedURLException e) {
+						// TODO Auto-generated catch block
+						Toast.makeText(getApplicationContext(), e.getMessage(),
+								Toast.LENGTH_LONG).show();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						Toast.makeText(getApplicationContext(), e.getMessage(),
+								Toast.LENGTH_LONG).show();
+					}
+					file = getFileFromUri("file://" + mediaStorageDir.getPath()
+							+ "/" + p.getImageUri());
+
+				} else if (file == null) {
+					file = getFileFromUri(p.getImageUri());
+				}
+
+				if (file != null) {
+					Bitmap bm = decodeSampledBitmapFromFile(file, 500, 500);
+					anh.setImageBitmap(bm);
+				}
+
+				break;
+			}
+		}
+
+>>>>>>> origin/master
 		if (!phoneNum.isEmpty()) {
 			ivCall.setImageResource(R.drawable.call);
 			ivCall.setOnClickListener(new OnClickListener() {
@@ -257,7 +343,10 @@ public class showInformation extends FragmentActivity implements
 			});
 		}
 
+<<<<<<< HEAD
 		// Chỉ đường từ vị trí hiện tại tới bãi đỗ xe này
+=======
+>>>>>>> origin/master
 		ivDirection.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -271,13 +360,18 @@ public class showInformation extends FragmentActivity implements
 		});
 
 		ivBookmark.setOnClickListener(new OnClickListener() {
+<<<<<<< HEAD
 			/*
 			 * Lưu dấu để có thể xem lại khi cần thiết một cách dễ dàng
 			 */
+=======
+
+>>>>>>> origin/master
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				if (!check) {
+<<<<<<< HEAD
 					ParkingLocation pl = new ParkingLocation(bookmark
 							.getMa_parking(), bookmark.getTen_parking(),
 							bookmark.getSdt(), bookmark.getDiachi(), bookmark
@@ -285,6 +379,10 @@ public class showInformation extends FragmentActivity implements
 							getImageName(), bookmark.getVitri());
 					if (ghiBookmark(pl)) {
 						GlobaVariables.bookmarkParking.add(pl);
+=======
+					if (ghiBookmark(bookmark)) {
+						GlobaVariables.bookmarkParking.add(bookmark);
+>>>>>>> origin/master
 					}
 				} else {
 					GlobaVariables.bookmarkParking.remove(s);
@@ -292,6 +390,7 @@ public class showInformation extends FragmentActivity implements
 			}
 		});
 		ivLike.setOnClickListener(new OnClickListener() {
+<<<<<<< HEAD
 			/*
 			 * Đánh giá chất lượng bãi đỗ xe
 			 */
@@ -346,16 +445,66 @@ public class showInformation extends FragmentActivity implements
 					GlobaVariables.getParkingLike.remove(parkingLike);
 				}
 
+=======
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (mDbHelper.addTrangthai(new Trangthai(s, MACaddress, 1))) {
+					AsyncHttpClient client = new AsyncHttpClient();
+					RequestParams params = new RequestParams();
+					params.put("status",
+							mDbHelper.composeJSONfromSQLiteStatus());
+					Log.d("info", mDbHelper.composeJSONfromSQLiteStatus());
+					client.post(GlobaVariables.SERVER_URL + "updParking.php",
+							params, new AsyncHttpResponseHandler() {
+								public void onSuccess(String response) {
+
+									Toast.makeText(getApplicationContext(),
+											response, Toast.LENGTH_LONG).show();
+								}
+
+								@Override
+								public void onFailure(int statusCode,
+										Throwable error, String content) {
+									if (statusCode == 404) {
+										Toast.makeText(getApplicationContext(),
+												"Requested resource not found",
+												Toast.LENGTH_LONG).show();
+									} else if (statusCode == 500) {
+										Toast.makeText(
+												getApplicationContext(),
+												"Something went wrong at server end",
+												Toast.LENGTH_LONG).show();
+									} else {
+										Toast.makeText(
+												getApplicationContext(),
+												statusCode
+														+ "Unexpected Error occcured! [Most common Error: Device might not be connected to Internet]",
+												Toast.LENGTH_LONG).show();
+									}
+								}
+							});
+				}
+>>>>>>> origin/master
 			}
 		});
 	}
 
+<<<<<<< HEAD
 	public boolean ghiBookmark(ParkingLocation p) { // Ghi thông tin bookmark
 													// vào DB
 		TestAdapter mDbHelper = new TestAdapter(getApplicationContext());
 		if (mDbHelper.addBookmark(p)) {
 			check = true;
 			Toast.makeText(getApplicationContext(), "Đánh dấu địa điểm thành công!",
+=======
+	public boolean ghiBookmark(ParkingLocation p) {
+		TestAdapter mDbHelper = new TestAdapter(getApplicationContext());
+		if (mDbHelper.addBookmark(p)) {
+			check = true;
+			Toast.makeText(getApplicationContext(), "Bookmark Completed !",
+>>>>>>> origin/master
 					Toast.LENGTH_LONG).show();
 			ivBookmark.setImageResource(R.drawable.bookmark);
 			return true;
@@ -363,8 +512,12 @@ public class showInformation extends FragmentActivity implements
 		return false;
 	}
 
+<<<<<<< HEAD
 	public void kiemtraBookmark() { // Kiểm tra xem bãi xe này đã được Bookmark
 									// hay chưa
+=======
+	public void kiemtraBookmark() {
+>>>>>>> origin/master
 		for (ParkingLocation pb : GlobaVariables.bookmarkParking) {
 			if (pb.getMa_parking().equals(s)) {
 				ivBookmark.setImageResource(R.drawable.bookmark);
@@ -386,7 +539,10 @@ public class showInformation extends FragmentActivity implements
 		m.showInfoWindow();
 		mmap.animateCamera(CameraUpdateFactory.newLatLngZoom(parkingLocation,
 				14f));
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 		mmap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
 
 			@Override
@@ -502,6 +658,7 @@ public class showInformation extends FragmentActivity implements
 		return inSampleSize;
 	}
 
+<<<<<<< HEAD
 	public String getImageName() { // Xử lý chuỗi Uril của ảnh để lấy ra tên ảnh
 		String imageName = "";
 		File file = getFileFromUri(bookmark.getImageUri());
@@ -512,5 +669,22 @@ public class showInformation extends FragmentActivity implements
 			imageName = bookmark.getImageUri();
 		}
 		return imageName;
+=======
+	public Bitmap getResizedBitmap(Bitmap bm, int newHeight, int newWidth) {
+		int width = bm.getWidth();
+		int height = bm.getHeight();
+		float scaleWidth = ((float) newWidth) / width;
+		float scaleHeight = ((float) newHeight) / height;
+		// CREATE A MATRIX FOR THE MANIPULATION
+		Matrix matrix = new Matrix();
+		// RESIZE THE BIT MAP
+		matrix.postScale(scaleWidth, scaleHeight);
+
+		// "RECREATE" THE NEW BITMAP
+		Bitmap resizedBitmap = Bitmap.createBitmap(bm, 0, 0, width, height,
+				matrix, false);
+
+		return resizedBitmap;
+>>>>>>> origin/master
 	}
 }

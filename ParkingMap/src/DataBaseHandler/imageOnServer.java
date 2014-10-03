@@ -44,12 +44,21 @@ public class imageOnServer {
 
 		} else {
 			try {
+<<<<<<< HEAD
 				// open a URL connection to the Servlet
 				FileInputStream fileInputStream = new FileInputStream(
 						sourceFile);
 				Log.d("Source", sourceFileUri);
 				URL url = new URL(GlobaVariables.SERVER_URL
 						+ "UploadToServer.php");
+=======
+
+				// open a URL connection to the Servlet
+				FileInputStream fileInputStream = new FileInputStream(
+						sourceFile);
+				URL url = new URL(
+						GlobaVariables.SERVER_URL + "UploadToServer.php");
+>>>>>>> origin/master
 
 				// Open a HTTP connection to the URL
 				conn = (HttpURLConnection) url.openConnection();
@@ -272,6 +281,7 @@ public class imageOnServer {
 		BufferedInputStream in = null;
 		FileOutputStream fout = null;
 		int count;
+<<<<<<< HEAD
 		try {
 			URL url = new URL(GlobaVariables.SERVER_URL + "uploads/" + filename);
 			URLConnection conection = url.openConnection();
@@ -335,11 +345,88 @@ public class imageOnServer {
 		 * } } finally { if (in != null) in.close(); if (fout != null)
 		 * fout.close(); }
 		 */
+=======
+        try {
+        	URL url = new URL(GlobaVariables.SERVER_URL + "uploads/" + filename);
+            URLConnection conection = url.openConnection();
+            conection.connect();
+            // getting file length
+            File mediaStorageDir;
+            if (Build.VERSION.SDK_INT > 8) {
+    			mediaStorageDir = Environment
+    					.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+    		} else {
+    			mediaStorageDir = new File(
+    					Environment.getExternalStorageDirectory(), "Pictures");
+    		}
+    		if (!mediaStorageDir.exists()) {
+    			if (mediaStorageDir.mkdirs() || mediaStorageDir.isDirectory()) {
+    				
+    			} 
+    		}
+            
+            Log.d("Url", GlobaVariables.SERVER_URL + "uploads/" + filename + mediaStorageDir.getPath());
+ 
+            // input stream to read file - with 8k buffer
+            InputStream input = new BufferedInputStream(url.openStream(), 8192);
+ 
+            // Output stream to write file
+            
+            Log.d("Out", mediaStorageDir.getPath() + "/" + filename);
+            OutputStream output = new FileOutputStream(mediaStorageDir.getPath() + "/" + filename);
+            
+            byte data[] = new byte[1024];
+ 
+            long total = 0;
+ 
+            while ((count = input.read(data)) != -1) {
+              output.write(data, 0, count);
+            }
+ 
+            // flushing output
+            output.flush();
+ 
+            // closing streams
+            output.close();
+            input.close();
+ 
+        } catch (Exception e) {
+
+        }
+/*		try {
+			URL url = new URL("http://tmas.hou.edu.vn/ms/uploads/" + filename);
+			File mediaStorageDir = getMediaStorageDir();
+			if (mediaStorageDir != null) {
+				File f = new File("file://" + mediaStorageDir.getPath() + "/" + filename);
+				if (!f.exists()) {
+					
+				}
+				fout = new FileOutputStream();
+				
+			}
+			in = new BufferedInputStream(url.openStream());
+			byte data[] = new byte[1024];
+			int count;
+			while ((count = in.read(data, 0, 1024)) != -1) {
+				fout.write(data, 0, count);
+
+			}
+		} finally {
+			if (in != null)
+				in.close();
+			if (fout != null)
+				fout.close();
+		}*/
+>>>>>>> origin/master
 	}
 
 	public static File getMediaStorageDir() {
 		File mediaStorageDir;
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> origin/master
 		return null;
 	}
 }
