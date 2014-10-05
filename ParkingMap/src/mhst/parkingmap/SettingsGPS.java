@@ -31,12 +31,8 @@ public class SettingsGPS extends Activity {
 		
 		LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 		if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-<<<<<<< HEAD
             Toast.makeText(getApplicationContext(), "GPS đã được bật trên thiết bị của bạn", Toast.LENGTH_LONG).show();
             super.onBackPressed();
-=======
-            Toast.makeText(this, "GPS đã được bật trên thiết bị của bạn", Toast.LENGTH_LONG).show();
->>>>>>> origin/master
         }else{
         	showAlertEnableGPS();
         }

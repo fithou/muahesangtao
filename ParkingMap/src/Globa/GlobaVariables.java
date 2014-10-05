@@ -3,10 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-<<<<<<< HEAD
 import Entity.ParkingLike;
-=======
->>>>>>> origin/master
 import Entity.ParkingLocation;
 
 
@@ -19,8 +16,5 @@ public class GlobaVariables {
 	public static List<String> getPhuong = new ArrayList<String>();
 	public static List<String> getQuan = new ArrayList<String>();
 	public static List<String> getTinhthanh = new ArrayList<String>();
-<<<<<<< HEAD
 	public static List<ParkingLike> getParkingLike = new ArrayList<ParkingLike>();
-=======
->>>>>>> origin/master
 }

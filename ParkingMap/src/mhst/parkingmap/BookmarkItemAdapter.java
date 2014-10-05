@@ -9,11 +9,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-<<<<<<< HEAD
 import android.os.Build;
 import android.os.Environment;
-=======
->>>>>>> origin/master
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +34,6 @@ public class BookmarkItemAdapter extends ArrayAdapter<ParkingLocation> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
 		File mediaStorageDir;
 		
 		if (Build.VERSION.SDK_INT > 8) {
@@ -47,8 +43,6 @@ public class BookmarkItemAdapter extends ArrayAdapter<ParkingLocation> {
 			mediaStorageDir = new File(
 					Environment.getExternalStorageDirectory(), "Pictures");
 		}
-=======
->>>>>>> origin/master
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowView = inflater.inflate(R.layout.window_info_layout, parent,
@@ -61,11 +55,7 @@ public class BookmarkItemAdapter extends ArrayAdapter<ParkingLocation> {
 		// Change the icon for Windows and iPhone
 		
 		ivAnh.setImageResource(R.drawable.giuxe);
-<<<<<<< HEAD
 		File file = getFileFromUri("file://" + mediaStorageDir.getPath() + "/" + data.get(position).getImageUri());
-=======
-		File file = getFileFromUri(data.get(position).getImageUri());
->>>>>>> origin/master
 
 		if (file != null) {
 			Bitmap bm = decodeSampledBitmapFromFile(file, 500, 500);
@@ -73,14 +63,10 @@ public class BookmarkItemAdapter extends ArrayAdapter<ParkingLocation> {
 		}
 		return rowView;
 	}
-<<<<<<< HEAD
 	
 	/*
 	 * Chuyển file sang dạng Bitmap
 	 */
-=======
-
->>>>>>> origin/master
 	private Bitmap decodeSampledBitmapFromFile(File file, int reqWidth,
 			int reqHeight) {
 		// TODO Auto-generated method stub
@@ -97,14 +83,10 @@ public class BookmarkItemAdapter extends ArrayAdapter<ParkingLocation> {
 		options.inJustDecodeBounds = false;
 		return BitmapFactory.decodeFile(file.getAbsolutePath(), options);
 	}
-<<<<<<< HEAD
 	
 	/*
 	 * Tạo file từ Uri
 	 */
-=======
-
->>>>>>> origin/master
 	private File getFileFromUri(String imgUri) {
 		// TODO Auto-generated method stub
 
@@ -123,13 +105,9 @@ public class BookmarkItemAdapter extends ArrayAdapter<ParkingLocation> {
 		return null;
 	}
 
-<<<<<<< HEAD
 	/*
 	 * Định lại kích thước file ảnh
 	 */
-=======
-	/** Calculate the scaling factor */
->>>>>>> origin/master
 	public static int calculateInSampleSize(BitmapFactory.Options options,
 			int reqWidth, int reqHeight) {
 		// Raw height and width of image

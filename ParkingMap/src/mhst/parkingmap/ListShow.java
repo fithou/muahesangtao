@@ -3,7 +3,6 @@ package mhst.parkingmap;
 
 
 
-<<<<<<< HEAD
 import DataBaseHandler.TestAdapter;
 import Globa.GlobaVariables;
 import android.support.v7.app.ActionBarActivity;
@@ -12,19 +11,11 @@ import android.text.AlteredCharSequence;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-=======
-import Globa.GlobaVariables;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
->>>>>>> origin/master
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
-<<<<<<< HEAD
 import android.view.MenuInflater;
-=======
->>>>>>> origin/master
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +26,6 @@ import android.widget.ListView;
 public class ListShow extends ActionBarActivity {
 	private ListView bookmarkList;
 	ParkingItemAdapter adapter = null;
-<<<<<<< HEAD
 	TestAdapter mDbHelper;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +36,6 @@ public class ListShow extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bookmark_parking);
 		mDbHelper = new TestAdapter(getApplicationContext());
-=======
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_bookmark_parking);
-		
->>>>>>> origin/master
 		
 		bookmarkList = (ListView) findViewById(R.id.listbookmark);
 
@@ -69,11 +52,7 @@ public class ListShow extends ActionBarActivity {
 				Intent t = new Intent(getApplicationContext(),
 						showInformation.class);
 
-<<<<<<< HEAD
 				t.putExtra("MarkerInfo", GlobaVariables.history.get(position).getMa_parking());
-=======
-				t.putExtra("MarkerInfo", GlobaVariables.history.get(position).getVitri());
->>>>>>> origin/master
 
 				startActivity(t);
 			}
@@ -83,11 +62,7 @@ public class ListShow extends ActionBarActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-<<<<<<< HEAD
 		MenuInflater inflater = getMenuInflater();
-=======
-
->>>>>>> origin/master
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.list_show, menu);
 		return true;
@@ -99,11 +74,10 @@ public class ListShow extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-<<<<<<< HEAD
 		if (id == R.id.action_history_delete) {
 			AlertDialog.Builder alertDiaglog = new AlertDialog.Builder(ListShow.this);
 			alertDiaglog.setTitle("Xác nhận");
-			alertDiaglog.setMessage("Bạn có chắc chắn muốn xóa ?");
+			alertDiaglog.setMessage("Bạn có chắc chắn muốn xóa?");
 			
 			alertDiaglog.setNegativeButton("Không", new OnClickListener() {
 				
@@ -124,9 +98,6 @@ public class ListShow extends ActionBarActivity {
 				}
 			});
 			alertDiaglog.show();
-=======
-		if (id == R.id.action_settings) {
->>>>>>> origin/master
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

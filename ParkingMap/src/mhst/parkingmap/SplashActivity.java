@@ -1,6 +1,5 @@
 package mhst.parkingmap;
 
-<<<<<<< HEAD
 
 
 import org.json.JSONArray;
@@ -11,9 +10,6 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
-=======
-import java.util.HashMap;
->>>>>>> origin/master
 import parkingPlaces.ConnectionDetector;
 import parkingPlaces.GPSTracker;
 import parkingPlaces.GooglePlaces;
@@ -26,24 +22,15 @@ import Globa.GlobaVariables;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-<<<<<<< HEAD
 
 
-=======
-import android.location.Address;
-import android.location.Geocoder;
->>>>>>> origin/master
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-<<<<<<< HEAD
 
-=======
-import android.widget.SlidingDrawer;
->>>>>>> origin/master
 import android.widget.Toast;
 
 public class SplashActivity extends Activity {
@@ -79,16 +66,12 @@ public class SplashActivity extends Activity {
 		gps = new GPSTracker(this);
 		isInternetPresent = cd.isConnectingToInternet();
 		if (gps.canGetLocation() && isInternetPresent) {
-<<<<<<< HEAD
 			
-			syncSQLiteServer();
 			getDBfromServer();
-=======
->>>>>>> origin/master
 			new LoadPlaces().execute();
 		} else {
 			Toast.makeText(getApplicationContext(),
-					"Hãy kiểm tra GPS và Internet của bạn", Toast.LENGTH_LONG)
+					"Kiểm tra lại kết nối GPS và Internet!", Toast.LENGTH_LONG)
 					.show();
 			Intent t = new Intent(getApplicationContext(), MainActivity.class);
 			startActivity(t);
@@ -143,11 +126,7 @@ public class SplashActivity extends Activity {
 				//
 				String types = "parking"; // Listing places only cafes,
 											// restaurants
-<<<<<<< HEAD
 				
-=======
-
->>>>>>> origin/master
 				// Radius in meters - increase this value if you don't find any
 				// places
 				double radius = 3000000; // 1000 meters
@@ -163,10 +142,6 @@ public class SplashActivity extends Activity {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-<<<<<<< HEAD
-			
-=======
->>>>>>> origin/master
 			return null;
 		}
 
@@ -184,27 +159,18 @@ public class SplashActivity extends Activity {
 					/**
 					 * Updating parsed Places into LISTVIEW
 					 * */
-<<<<<<< HEAD
-					syncSQLiteServer();
+					//syncSQLiteServer();
 					getDBfromServer();
 					String status = null;
 					// Get json response status
 					if (nearPlaces != null) {
 						status = nearPlaces.status;
 					}					
-=======
-					// Get json response status
-					String status = nearPlaces.status;
->>>>>>> origin/master
 					if (mDbHelper.getAllParking().size()>0) {
 						GlobaVariables.listParking = mDbHelper.getAllParking();
 						Log.d("Trang thai du lieu","Da co du lieu : " + GlobaVariables.listParking.size());
 					}
-<<<<<<< HEAD
 					
-=======
-
->>>>>>> origin/master
 					// Check for all possible status
 					if (status.equals("OK")) {
 						// Successfully got places details
@@ -266,47 +232,43 @@ public class SplashActivity extends Activity {
 						// Zero results found
 						Toast.makeText(
 								getApplicationContext(),
-								"Sorry no places found. Try to change the types of places",
+								"Máy chủ hệ thống đang bảo trì!",
 								Toast.LENGTH_LONG).show();
 					} else if (status.equals("UNKNOWN_ERROR")) {
 						Toast.makeText(getApplicationContext(),
-								"Sorry unknown error occured.",
+								"Máy chủ hệ thống đang bảo trì!",
 								Toast.LENGTH_LONG).show();
 					} else if (status.equals("OVER_QUERY_LIMIT")) {
 
 						Toast.makeText(
 								getApplicationContext(),
-								"Sorry query limit to google places is reached",
+								"Máy chủ hệ thống đang bảo trì!",
 								Toast.LENGTH_LONG).show();
 					} else if (status.equals("REQUEST_DENIED")) {
 
 						Toast.makeText(getApplicationContext(),
-								"Sorry error occured. Request is denied",
+								"Máy chủ hệ thống đang bảo trì!",
 								Toast.LENGTH_LONG).show();
 					} else if (status.equals("INVALID_REQUEST")) {
 
 						Toast.makeText(getApplicationContext(),
-								"Sorry error occured. Invalid Request",
+								"Máy chủ hệ thống đang bảo trì!",
 								Toast.LENGTH_LONG).show();
 					} else {
 
 						Toast.makeText(getApplicationContext(),
-								"Sorry error occured.", Toast.LENGTH_LONG)
-								.show();
+								"Máy chủ hệ thống đang bảo trì!",
+								Toast.LENGTH_LONG).show();
 					}
 				}
 			});
-<<<<<<< HEAD
 			//mDbHelper.uploadAnhToServer();
-=======
->>>>>>> origin/master
 			Intent t = new Intent(getApplicationContext(), MainActivity.class);
 			startActivity(t);
 
 		}
 
 	}
-<<<<<<< HEAD
 	public void syncSQLiteServer() {
 		// Create AsycHttpClient object
 		AsyncHttpClient client = new AsyncHttpClient();
@@ -420,6 +382,4 @@ public class SplashActivity extends Activity {
 			Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
 		}
 	}
-=======
->>>>>>> origin/master
 }
